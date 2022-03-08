@@ -1,0 +1,75 @@
+﻿@model KurumsalWeb.Models.Model.Entity.iletisim
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>iletisim</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.adres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mailAdres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mailAdres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.whatshapp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.whatshapp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.facebook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.facebook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.twitter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.twitter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.instagram)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.instagram)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.iletisimID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

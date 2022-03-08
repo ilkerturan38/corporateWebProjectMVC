@@ -1,0 +1,101 @@
+﻿@using KurumsalWeb.Models.Model.Entity
+@model admin
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<section class="section profile">
+    <div class="row">
+        <div class="col-xl-4">
+            <div class="card">
+                <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                    <img src="https://cdn2.iconfinder.com/data/icons/teen-people-face-avatar-2/500/high_129-1024.png" alt="Profile" class="rounded-circle">
+                    <h2>@Model.adminMail</h2>
+                    <h3>@Model.yetki</h3>
+                    <div class="social-links mt-2">
+                        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xl-8">
+
+            <div class="card">
+                <div class="card-body pt-3">
+                    <!-- Bordered Tabs -->
+                    <ul class="nav nav-tabs nav-tabs-bordered">
+
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Bilgilerim</button>
+                        </li>
+
+                        <li class="nav-item">
+                            @*<button class="nav-link" data-bs-toggle="tab"><a href="/yonetimpaneli/profilGuncelle">Bilgilerimi Güncelle</a></button> // Guncelleme sayfası oluşturup,Post işlemi yapıldığında gidilecek link. *@
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Bilgilerimi Güncelle</button> @*Güncelleme sayfasını oluşturmadan,mevcut sayfada profilGuncelle ActionResult'a giden link.*@
+                        </li>
+                    </ul>
+                    <div class="tab-content pt-2">
+                        <br />
+                        <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                            @*<div class="col-lg-3 col-md-4 label">@Session["ID"]</div>*@
+                            @*<div class="col-lg-3 col-md-4 label">@cerez["ID"]</div>*@
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Email</div>
+                                <div class="col-lg-9 col-md-8">@Model.adminMail</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Şifre</div>
+                                <div class="col-lg-9 col-md-8">@Model.adminPassword</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Yetki</div>
+                                <div class="col-lg-9 col-md-8">@Model.yetki</div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                            @using (Html.BeginForm("profilGuncelle", "_Admin"))
+                            {
+                                @Html.AntiForgeryToken();
+                                <div class="row mb-3">
+                                    <label for="adminMail" class="col-md-4 col-lg-3 col-form-label">E-mail</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="adminMail" type="text" class="form-control" value="@Model.adminMail">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="adminPassword" class="col-md-4 col-lg-3 col-form-label">Yeni Parola</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="adminPassword" type="password" class="form-control" value="@Model.adminPassword">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="yetki" class="col-md-4 col-lg-3 col-form-label">Yetki</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input name="yetki" type="text" class="form-control" value="@Model.yetki">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-8 col-lg-9">
+                                        <button type="submit" class="btn btn-primary">Güncelle</button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning">
+                                    <strong>@ViewBag.hata</strong>
+                                </div>
+                            }
+                        </div>
+                    </div><!-- End Bordered Tabs -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+
+@using (Html.BeginForm("Create", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+    <div class="col-12">
+        <label for="inputNanme4" class="form-label">Başlık</label>
+        <input type="text" class="form-control" name="Baslik">
+    </div>
+    <div class="col-12">
+        <label for="inputNanme4" class="form-label">İçerik</label>
+        <textarea name="Icerik" class="form-control" id="editor"></textarea>
+    </div>
+    <div class="col-12">
+        <label for="inputNanme4" class="form-label">Resim</label>
+        <input id="File1" type="file" name="resimURL" accept=".png,.jpg,.jpeg" class="form-control" required />
+    </div>
+    <div class="col-12">
+        <label for="inputNanme4" class="form-label">Kategori</label>
+        @Html.DropDownList("kategoriID", ViewBag.kategoriID as IEnumerable<SelectListItem> , new { @class = "form-control" })
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Yeni Blog Kaydı Ekle</button>
+        <button type="reset" class="btn btn-secondary">Sıfırla</button>
+    </div>
+}
+
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
+

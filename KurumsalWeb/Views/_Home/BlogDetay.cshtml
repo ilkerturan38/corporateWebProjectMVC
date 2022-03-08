@@ -1,0 +1,77 @@
+﻿@using KurumsalWeb.Models.Model.Entity
+@model blog
+@{
+    ViewBag.Title = "BlogDetay";
+    Layout = "~/Views/Shared/_HomeLayoutGuncel.cshtml";
+}
+
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+                    <li class="active">Blog</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <article>
+                    <div class="post-image">
+                        <div class="post-heading">
+                        </div>
+                        <img src="@Model.resimURL" alt="@Model.Baslik" width="200" height="80" />
+                    </div>
+                    <p>
+                        @Html.Raw(Model.Icerik)... @*İçerik Kısmının Tamamı gözüksün *@
+                    </p>
+                    <div class="bottom-article">
+                        <ul class="meta-post">
+                            <li><i class="icon-folder-open"></i><a href="#">@Model.Kategoriler.kategoriAdi</a></li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-12">
+                @Html.Action("yorumGetir", "_Home")
+            </div>
+            <div class="col-md-12">
+                <h3>Yorum Yap</h3>
+                <div class="col-md-8">
+                    <form method="post" action="/_Home/yorum">
+                        <input class="form-control" type="hidden" name="blogID" value="@ViewBag.blogID" />
+                        <input class="form-control" type="text" name="adsoyad" placeholder="Adınız-Soyadınız.." required><br />
+                        <input class="form-control" type="email" name="email" placeholder="Mail Adresiniz.." required><br />
+                        <textarea name="Icerik" typeof="text" class="form-control" required></textarea><br />
+                        <button type="submit" class="btn btn-primary" id="kaydet">Kaydet</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script src="~/Content/eskiModerna/js/jquery.js"></script>
+
+<!-- Sayfa yüklendiğinde, Arkaplan'da _Home Controller içerisinde bulunan tiklanmaSayisi ActionResult'a git ve içerisindeki kodları çalıştır.-->
+<!-- Herhangi blog yazısına tıklanıp,detaySayfası görüntülendiği zaman, bu fonksiyon çalışır.-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $.ajax({
+            url: '/_Home/tiklanmaSayisi/',
+            data: { blogID: @Model.blogID}, @* Burdaki blogID,Controller içerisinde tanımlanan,parametre ismide aynı olmalı.*@
+            type: 'POST',
+        });
+    })
+</script>
+
+

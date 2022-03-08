@@ -1,0 +1,19 @@
+﻿@using KurumsalWeb.Helper;
+@using KurumsalWeb.Models.Model.Entity
+@model IEnumerable<kategoriler>
+
+@foreach (var item in Model)
+{
+    <ul class="cat">
+        @*
+            * Kategoriler Tablosunda,kategoriAdlarına göre Kategorileri Getirdik.
+            * Sonra KategoriBlok ActionResult'a,kategoriID gönderdik
+            * KategoriBlok ActionResult'ta gelen ID değerine göre o kategorilere ait tüm blog yazılarını gösterdik.
+            * Ve son olarak Her kategori'ye ait toplam Blog kayıt sayısını döndürdük.
+        *@
+
+        @*<li><i class="icon-angle-right"></i><a href="/_Home/kategoriBlog/@item.kategoriID">@item.kategoriAdi</a><span> (@item.Blogs.Count())</span></li>*@
+
+        <li><i class="icon-angle-right"></i><a href="/blog/@SeoHelper.ToSeoUrl(item.kategoriAdi).ToLower()/@item.kategoriID/">@item.kategoriAdi</a><span> (@item.Blogs.Count())</span></li>
+    </ul>
+}

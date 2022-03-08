@@ -1,0 +1,24 @@
+﻿@using KurumsalWeb.Models.Model.Entity
+@model IEnumerable<yorum>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Yorum Yapan Adsoyad</th>
+            <th scope="col">Email</th>
+            <th scope="col">İçerik</th>
+            <th scope="col">Yorum Yapılan Blog İsmi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.adsoyad</td>
+            <td>@item.email</td>
+            <td>@Html.Raw(@item.Icerik)</td>
+            <td>@item.blog.Baslik</td>
+        </tr>
+        }
+    </tbody>
+</table>

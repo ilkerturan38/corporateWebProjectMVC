@@ -1,0 +1,40 @@
+﻿@using KurumsalWeb.Models.Model.Entity
+@model List<yorum>
+
+
+<h3>Onaylı Yorumlar</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">AdSoyad</th>
+            <th scope="col">Email</th>
+            <th scope="col">İçerik</th>
+            <th scope="col">Blog Adı</th>
+            <th scope="col">Onay Tipi</th>
+            <th scope="col">Yapılacak İşlem</th>
+            <th scope="col">Güncelle</th>
+            <th scope="col">Sil</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.adsoyad</td>
+                <td>@item.email</td>
+                <td>@Html.Raw(@item.Icerik)</td>
+                <td>@item.blog.Baslik</td>
+                <td>@item.yorumOnay</td>
+                <td><a href="/_Yorum/yorumPasif/@item.yorumID" class="btn btn-success">Yorumu Onaydan Çıkar</a></td>
+                <td><a href="/_Yorum/yorumGuncelleme/@item.yorumID" class="btn btn-primary">Düzenle</a></td>
+                <td>
+                    @Html.ActionLink("Sil", "yorumSilme", new { id = item.yorumID }, new { @class = "btn btn-dark", onclick = "return confirm('Gerçekten Silmek istiyor Musunuz ? ')" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="alert alert-warning" id="gecis">
+    <strong>@ViewBag.hata</strong>
+</div>

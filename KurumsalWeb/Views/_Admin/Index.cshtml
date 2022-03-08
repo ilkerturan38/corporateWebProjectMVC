@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<section class="section dashboard">
+    <div class="row">
+
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+
+                        <div class="filter">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Blog <span>| Tablosu</span></h5>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-app"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6 class="text-center">@ViewBag.blogSayisi</h6>
+                                    <span class="text-success small pt-1 fw-bold">Toplam Kayıt Sayısı..</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+
+                        <div class="filter">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Hizmet<span>| Tablosu</span></h5>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-app"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6 class="text-center">@ViewBag.hizmetSayisi</h6>
+                                    <span class="text-success small pt-1 fw-bold">Toplam Kayıt Sayısı..</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+
+                        <div class="filter">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Yorum<span>| Tablosu</span></h5>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-app"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6 class="text-center">@ViewBag.yorumSayisi</h6>
+                                    <span class="text-success small pt-1 fw-bold">Toplam Kayıt Sayısı..</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+
+                        <div class="filter">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Kategori<span>| Tablosu</span></h5>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-app"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6 class="text-center">@ViewBag.kategoriSayisi</h6>
+                                    <span class="text-success small pt-1 fw-bold">Toplam Kayıt Sayısı..</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

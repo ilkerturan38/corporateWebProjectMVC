@@ -1,0 +1,59 @@
+﻿@model IEnumerable< KurumsalWeb.Models.Model.Entity.blog>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script>
+<script src="~/Scripts/DataTables/responsive.bootstrap.min.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>
+
+
+<table id="myTable" class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Başlık</th>
+            <th>İçerik</th>
+            <th>Resim</th>
+            <th>Kategori</th>
+            <th>Düzenle</th>
+            <th>Sil</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Baslik</td>
+                <td>@Html.Raw(@item.Icerik)</td>
+                <td><img src="@item.resimURL" alt="Alternate Text" width="140" height="140" /></td>
+
+                @* (Foreign Key Bağlantılı) Blog Tablosundaki Her Kayda Ait Olan Kategori Adını Getirdik.*@
+                <td>@item.Kategoriler.kategoriAdi</td> @* Controller'da Listeleme yaparken Include Yöntemi ile Kategoriler Tablosunu Ekledik ve içerisindeki kayıtlarına ulaşabiliyoruz.*@
+
+                <td><a href="/adminBlogGuncelle/@item.blogID">Düzenle</a></td>
+                <td><a href="/adminBlogSil/@item.blogID">Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $('#myTable').DataTable({
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
+        }
+    });
+</script>
+<a class="btn btn-danger" id="btn" href="/adminYeniBlogEkle">Yeni Blog Ekle</a>
+<div class="alert alert-warning" id="gecis">
+    <strong>@TempData["uyari"]</strong>
+</div>
+

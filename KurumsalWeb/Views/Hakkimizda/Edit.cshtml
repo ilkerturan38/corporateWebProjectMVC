@@ -1,0 +1,55 @@
+﻿@model KurumsalWeb.Models.Model.Entity.hakkimizda
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>hakkimizda</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.hakkimizdaID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.aciklama, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <textarea name="aciklama" id="editor">@Model.aciklama</textarea>
+                @Html.ValidationMessageFor(model => model.aciklama, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+    <div class="alert-warning animate__animated animate__fadeInLeft" id="gecis">
+        <strong>@Html.ValidationMessageFor(model => model.aciklama, "", new { @class = "text-danger" })</strong>
+        <strong>@TempData["uyari"]</strong>
+    </div>
+}
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

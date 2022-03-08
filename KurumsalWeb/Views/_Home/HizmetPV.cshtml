@@ -1,0 +1,24 @@
+﻿@using KurumsalWeb.Models.Model.Entity
+@model List<hizmet>
+
+<link href="~/Content/eskiModerna/css/ImageCard.css" rel="stylesheet" />
+
+<div class="container">
+    <ul class="cards">
+        @foreach (var item in Model)
+        {
+        <li class="cards_item">
+            <div class="card">
+                <div class="card_image"><img src="@item.resimURL"></div>
+                <div class="card_content">
+                    <h2 class="card_title">@item.baslik</h2>
+                    <p class="card_text">@item.aciklama</p>
+                    <button class="btn card_btn">Devamını Oku</button>
+                </div>
+            </div>
+        </li>
+        }
+    </ul>
+</div>
+
+

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @Html.Action("kimlikPV", "_Home")
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <!---->
+    <link href="~/Content/eskiModerna/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/eskiModerna/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+    <link href="~/Content/eskiModerna/css/jcarousel.css" rel="stylesheet" />
+    <link href="~/Content/eskiModerna/css/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/eskiModerna/css/style.css" rel="stylesheet" />
+
+    <!-- Theme skin -->
+    <link href="~/Content/eskiModerna/skins/default.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.Action("siteLogoPV", "_Home")
+                </div>
+                <div class="navbar-collapse collapse ">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/Anasayfa">Anasayfa</a></li>
+                        <li><a href="/Hakkimizda">Hakkimizda</a></li>
+                        <li><a href="/Hizmetler">Hizmetlerimiz</a></li>
+                        <li><a href="/Blog">Blog</a></li>
+                        <li><a href="/Iletisim">İLETİŞİM</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="featured">
+        <!-- start slider -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </section>
+    @Html.Action("FooterPV", "_Home")
+
+    <script src="~/Content/eskiModerna/js/jquery.js"></script>
+    <script src="~/Content/eskiModerna/js/jquery.easing.1.3.js"></script>
+    <script src="~/Content/eskiModerna/js/bootstrap.min.js"></script>
+    <script src="~/Content/eskiModerna/js/jquery.fancybox.pack.js"></script>
+    <script src="~/Content/eskiModerna/js/jquery.fancybox-media.js"></script>
+    <script src="~/Content/eskiModerna/js/google-code-prettify/prettify.js"></script>
+    <script src="~/Content/eskiModerna/js/portfolio/jquery.quicksand.js"></script>
+    <script src="~/Content/eskiModerna/js/portfolio/setting.js"></script>
+    <script src="~/Content/eskiModerna/js/jquery.flexslider.js"></script>
+    <script src="~/Content/eskiModerna/js/animate.js"></script>
+    <script src="~/Content/eskiModerna/js/custom.js"></script>
+</body>
+</html>

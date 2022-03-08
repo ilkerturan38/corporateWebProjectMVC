@@ -1,0 +1,40 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Model.Entity.kategoriler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.kategoriAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kategoriAciklama)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.kategoriAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kategoriAciklama)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.kategoriID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.kategoriID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.kategoriID })
+        </td>
+    </tr>
+}
+
+</table>

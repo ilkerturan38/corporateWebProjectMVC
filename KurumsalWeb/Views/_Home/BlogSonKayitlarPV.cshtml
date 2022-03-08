@@ -1,0 +1,18 @@
+﻿@using KurumsalWeb.Models.Model.Entity
+@model List<blog>
+@using KurumsalWeb.Helper;
+<div class="widget">
+    <h5 class="widgetheading">Son Blog Kayıtları</h5>
+    <ul class="recent">
+        @foreach (var item in Model)
+        {
+            <li>
+                <img src="@item.resimURL" class="pull-left" alt="@item.Baslik" width="120" height="80"/>
+                <h6><a href="/blog/@SeoHelper.ToSeoUrl(item.Baslik).ToLower()-@item.blogID">@item.Baslik</a></h6>
+                <p>
+                    @Html.Raw(item.Icerik.Substring(0, item.Icerik.Substring(0,135).LastIndexOf(" ")))
+                </p>
+            </li>
+        }
+    </ul>
+</div>

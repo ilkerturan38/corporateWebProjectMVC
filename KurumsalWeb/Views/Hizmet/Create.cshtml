@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
+
+<form class="row g-3" method="post" action="#" enctype="multipart/form-data"> <!--Create Sayfası Hizmet Controller'ına Bağlı olduğu için Form'da Action Link Tanımlamaya gerek yok.-->
+    <div class="col-12">
+        <label for="inputNanme4" class="form-label">Başlık</label>
+        <input type="text" class="form-control" id="baslik" name="baslik">
+    </div>
+    <div class="col-12">
+        <label for="inputNanme4" class="form-label">Açıklama</label>
+        <textarea name="aciklama" class="form-control" id="editor"></textarea>
+    </div>
+    <div class="col-12">
+        <label for="inputNanme4" class="form-label">Resim</label><br />
+        <input id="File1" type="file" name="resimURL" accept=".png,.jpg,.jpeg" class="form-control" required />
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" id="kaydet">Kaydet</button>
+        <button type="reset" class="btn btn-secondary">Sıfırla</button>
+    </div>
+</form>
+
+<div class="alert alert-warning" id="gecis">
+    <strong>@TempData["uyari"]</strong>
+</div>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>

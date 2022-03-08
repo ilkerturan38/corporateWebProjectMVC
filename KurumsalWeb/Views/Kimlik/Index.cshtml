@@ -1,0 +1,71 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Model.Entity.kimlik>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    var cerez = Request.Cookies["admin"];
+}
+
+@if (cerez != null)
+{
+    if (@cerez["yetki"] != "admin")
+    {
+        Response.Redirect("/yonetimpaneli");
+    }
+    else
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table table-danger table-striped table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.keywords)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.logoURL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.unvan)
+                </th>
+                <th>İşlemler</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.keywords)
+                    </td>
+                    <td>
+                        @Html.Raw(item.description)
+                    </td>
+                    <td>
+                        <img src="@item.logoURL" width="200" height="200" alt="Alternate Text" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.unvan)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Güncelle", "Edit", new { id = item.kimlikID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.kimlikID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.kimlikID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <div class="alert-warning animate__animated animate__fadeInLeft" id="gecis">
+            <strong>@TempData["uyari"]</strong>
+        </div>
+    }
+}
